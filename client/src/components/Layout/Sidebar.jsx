@@ -1,5 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
+const HomeIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    <polyline points="9 22 9 12 15 12 15 22" />
+  </svg>
+);
+
 const OverviewIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
     <rect x="3" y="3" width="7" height="9" rx="1.5" />
@@ -16,8 +23,6 @@ const LedgerIcon = () => (
   </svg>
 );
 
-// Left rail on desktop, bottom navigation on mobile (handled in CSS). NavLink
-// gives us the active state for free based on the current route.
 export default function Sidebar() {
   return (
     <aside className="sidebar">
@@ -37,6 +42,10 @@ export default function Sidebar() {
       </div>
 
       <nav className="sidebar__nav" aria-label="Primary">
+        <NavLink to="/welcome" className="nav-link">
+          <HomeIcon />
+          <span>Home</span>
+        </NavLink>
         <NavLink to="/" end className="nav-link">
           <OverviewIcon />
           <span>Overview</span>
@@ -46,7 +55,6 @@ export default function Sidebar() {
           <span>Transactions</span>
         </NavLink>
       </nav>
-
     </aside>
   );
 }
