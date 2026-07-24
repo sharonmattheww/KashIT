@@ -1,0 +1,13 @@
+{
+  "name": "kashit",
+  "version": "1.0.0",
+  "description": "KashIT - Personal Finance Dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "install-deps": "npm --prefix server install && npm --prefix client install",
+    "build": "npm run install-deps && npm --prefix client run build && npm --prefix server run seed",
+    "start": "node server/server.js",
+    "test": "npm --prefix client test && npm --prefix server test"
+  }
+}
