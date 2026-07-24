@@ -47,7 +47,6 @@ export default function Sidebar() {
         </NavLink>
       </nav>
 
-      <p className="sidebar__note">Local demo · single user</p>
     </aside>
   );
 }
