@@ -20,9 +20,9 @@ export function FinanceProvider({ children }) {
   const refresh = () => setVersion((v) => v + 1);
 
   const categories = useFetch(() => categoriesApi.list(), []);
-  const summary = useFetch(() => summaryApi.get(month), [month, version]);
-  const trend = useFetch(() => summaryApi.getTrend(6), [version]);
-  const daily = useFetch(() => summaryApi.getDaily(month), [month, version]);
+  const summary = useFetch(() => summaryApi.get?.(month), [month, version]);
+  const trend = useFetch(() => summaryApi.getTrend?.(6), [version]);
+  const daily = useFetch(() => (summaryApi.getDaily ? summaryApi.getDaily(month) : Promise.resolve([])), [month, version]);
   const transactions = useFetch(
     () => transactionsApi.list({ month, ...filters }),
     [month, filters.category, filters.search, filters.type, version],
