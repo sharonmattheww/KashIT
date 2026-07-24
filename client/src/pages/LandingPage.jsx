@@ -47,10 +47,6 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-
-      <footer className="landing-footer">
-        <p>KashIT — Executive Personal Finance Dashboard</p>
-      </footer>
     </div>
   );
 }
