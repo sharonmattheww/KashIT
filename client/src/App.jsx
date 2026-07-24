@@ -13,12 +13,10 @@ export default function App() {
         {/* Landing Page */}
         <Route path="/welcome" element={<LandingPage />} />
 
-        {/* Main Dashboard Shell */}
+        {/* Dashboard Pages */}
         <Route element={<AppLayout />}>
           <Route path="/" element={<OverviewPage />} />
-          <Route path="/app" element={<OverviewPage />} />
           <Route path="/transactions" element={<TransactionsPage />} />
-          <Route path="/app/transactions" element={<TransactionsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

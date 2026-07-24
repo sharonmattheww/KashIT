@@ -6,10 +6,9 @@ import { formatMonth, recentMonths } from '../../utils/format.js';
 const TITLES = {
   '/': 'Overview',
   '/transactions': 'Transactions',
+  '/welcome': 'Welcome',
 };
 
-// Top bar shared by every view: the current view title, the month selector that
-// drives all the data below, and the primary action.
 export default function TopBar({ onAdd }) {
   const { month, setMonth } = useFinance();
   const { pathname } = useLocation();
