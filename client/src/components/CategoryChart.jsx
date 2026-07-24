@@ -113,7 +113,7 @@ function HBarView({ byCategory, totalExpense }) {
         >
           <CartesianGrid
             horizontal={false}
-            stroke="rgba(139,92,246,0.1)"
+            stroke="var(--line)"
             strokeDasharray="4 3"
           />
           <XAxis
@@ -121,7 +121,7 @@ function HBarView({ byCategory, totalExpense }) {
             axisLine={false}
             tickLine={false}
             tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v)}
-            tick={{ fontSize: 11, fill: 'var(--text-3)', fontFamily: 'var(--font-mono)' }}
+            tick={{ fontSize: 11, fill: 'var(--faint)', fontFamily: 'var(--font-mono)' }}
           />
           <YAxis
             type="category"
@@ -129,9 +129,9 @@ function HBarView({ byCategory, totalExpense }) {
             axisLine={false}
             tickLine={false}
             width={80}
-            tick={{ fontSize: 12, fill: 'var(--text-1)', fontFamily: 'var(--font-sans)' }}
+            tick={{ fontSize: 12, fill: 'var(--ink)', fontFamily: 'var(--font-sans)' }}
           />
-          <Tooltip content={<BarTooltip />} cursor={{ fill: 'var(--accent-soft)' }} />
+          <Tooltip content={<BarTooltip />} cursor={{ fill: 'var(--brand-tint)' }} />
           <Bar
             dataKey="total"
             radius={[0, 5, 5, 0]}

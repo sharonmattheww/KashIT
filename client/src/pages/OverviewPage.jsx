@@ -4,44 +4,53 @@ import { useFinance } from '../context/FinanceContext.jsx';
 import { formatMonth } from '../utils/format.js';
 import SummaryCards from '../components/SummaryCards.jsx';
 import CategoryChart from '../components/CategoryChart.jsx';
-import MonthlyTrendChart from '../components/MonthlyTrendChart.jsx';
+import TargetGaugeCard from '../components/TargetGaugeCard.jsx';
 import DailySpendingChart from '../components/DailySpendingChart.jsx';
+import MonthlyTrendChart from '../components/MonthlyTrendChart.jsx';
 import TransactionList from '../components/TransactionList.jsx';
 import Spinner from '../components/Spinner.jsx';
 
 export default function OverviewPage() {
-  const { summary, trend, daily, month, transactions, deleteTransaction } = useFinance();
+  const { summary, trend, daily, transactions, deleteTransaction } = useFinance();
   const { openForm } = useOutletContext();
 
-  // Show the six most recent transactions
   const recent = transactions.data ? transactions.data.slice(0, 6) : null;
+  const currentMonthLabel = summary.data?.month ? formatMonth(summary.data.month) : '';
+  const currentYear = summary.data?.month ? summary.data.month.slice(0, 4) : '2026';
 
   return (
     <div className="stack">
-      {/* KPI Cards row */}
+      {/* Featured Header Banner matching Reference Image 1 */}
+      <div className="hero-banner">
+        <div className="hero-banner__title-group">
+          <span className="hero-banner__year">{currentYear}</span>
+          <h1 className="hero-banner__heading">Monthly Financial Performance</h1>
+          <p className="hero-banner__sub">{currentMonthLabel} Audit & Cashflow Intelligence</p>
+        </div>
+        <div className="hero-banner__actions">
+          <button type="button" className="btn btn--primary" onClick={() => openForm()}>
+            + Add Transaction
+          </button>
+        </div>
+      </div>
+
+      {/* Top Visual Analytics Grid (Gauges, Spending Velocity, Category) */}
+      <div className="analytics-hero-grid">
+        {/* Gauge Arc Meter Component */}
+        <TargetGaugeCard summary={summary.data} />
+
+        {/* Weekly & Daily Velocity Line Chart (3rd Chart!) */}
+        <DailySpendingChart dailyData={daily.data} />
+      </div>
+
+      {/* 4 Summary Cards with Progress Bars */}
       <SummaryCards summary={summary.data} loading={summary.loading} />
 
-      {/* Main bento grid */}
+      {/* Category Breakdown & Recent Activity */}
       <div className="overview-grid">
-        {/* Daily Spending Timeline (New Feature) */}
         <section className="panel">
           <div className="panel__head">
-            <h2 className="panel__title">Daily Activity Timeline</h2>
-            {month && <p className="panel__hint">{formatMonth(month)}</p>}
-          </div>
-          <div className="panel__body">
-            {daily.loading && !daily.data ? (
-              <Spinner label="Loading timeline…" />
-            ) : (
-              <DailySpendingChart data={daily.data} month={month} />
-            )}
-          </div>
-        </section>
-
-        {/* Category Breakdown */}
-        <section className="panel">
-          <div className="panel__head">
-            <h2 className="panel__title">Spending by category</h2>
+            <h2 className="panel__title">Spending by Category</h2>
             {summary.data?.month && <p className="panel__hint">{formatMonth(summary.data.month)}</p>}
           </div>
           <div className="panel__body">
@@ -56,10 +65,9 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* Recent Transactions ledger snippet */}
         <section className="panel">
           <div className="panel__head">
-            <h2 className="panel__title">Recent activity</h2>
+            <h2 className="panel__title">Recent Activity</h2>
             <Link to="/transactions" className="panel__link">
               View all →
             </Link>
@@ -77,11 +85,11 @@ export default function OverviewPage() {
         </section>
       </div>
 
-      {/* 6-Month Income vs Expense Trend */}
+      {/* Full-width 6-Month Income vs Expense Trend Bar Chart */}
       <section className="panel">
         <div className="panel__head">
-          <h2 className="panel__title">Income vs Expenses — 6-month trend</h2>
-          <p className="panel__hint">Last 6 months</p>
+          <h2 className="panel__title">Income vs Expenses — 6-Month Trend</h2>
+          <p className="panel__hint">Historical Overview</p>
         </div>
         <div className="panel__body">
           {trend.loading && !trend.data ? (
