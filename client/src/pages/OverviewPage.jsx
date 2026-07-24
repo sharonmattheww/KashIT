@@ -5,22 +5,40 @@ import { formatMonth } from '../utils/format.js';
 import SummaryCards from '../components/SummaryCards.jsx';
 import CategoryChart from '../components/CategoryChart.jsx';
 import MonthlyTrendChart from '../components/MonthlyTrendChart.jsx';
+import DailySpendingChart from '../components/DailySpendingChart.jsx';
 import TransactionList from '../components/TransactionList.jsx';
 import Spinner from '../components/Spinner.jsx';
 
 export default function OverviewPage() {
-  const { summary, trend, transactions, deleteTransaction } = useFinance();
+  const { summary, trend, daily, month, transactions, deleteTransaction } = useFinance();
   const { openForm } = useOutletContext();
 
-  // Show the six most recent; null (not []) while loading so the list can tell
-  // "still loading" apart from "genuinely empty".
+  // Show the six most recent transactions
   const recent = transactions.data ? transactions.data.slice(0, 6) : null;
 
   return (
     <div className="stack">
+      {/* KPI Cards row */}
       <SummaryCards summary={summary.data} loading={summary.loading} />
 
+      {/* Main bento grid */}
       <div className="overview-grid">
+        {/* Daily Spending Timeline (New Feature) */}
+        <section className="panel">
+          <div className="panel__head">
+            <h2 className="panel__title">Daily Activity Timeline</h2>
+            {month && <p className="panel__hint">{formatMonth(month)}</p>}
+          </div>
+          <div className="panel__body">
+            {daily.loading && !daily.data ? (
+              <Spinner label="Loading timeline…" />
+            ) : (
+              <DailySpendingChart data={daily.data} month={month} />
+            )}
+          </div>
+        </section>
+
+        {/* Category Breakdown */}
         <section className="panel">
           <div className="panel__head">
             <h2 className="panel__title">Spending by category</h2>
@@ -38,6 +56,7 @@ export default function OverviewPage() {
           </div>
         </section>
 
+        {/* Recent Transactions ledger snippet */}
         <section className="panel">
           <div className="panel__head">
             <h2 className="panel__title">Recent activity</h2>
@@ -58,7 +77,7 @@ export default function OverviewPage() {
         </section>
       </div>
 
-      {/* Full-width monthly trend panel */}
+      {/* 6-Month Income vs Expense Trend */}
       <section className="panel">
         <div className="panel__head">
           <h2 className="panel__title">Income vs Expenses — 6-month trend</h2>

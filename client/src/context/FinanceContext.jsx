@@ -22,6 +22,7 @@ export function FinanceProvider({ children }) {
   const categories = useFetch(() => categoriesApi.list(), []);
   const summary = useFetch(() => summaryApi.get(month), [month, version]);
   const trend = useFetch(() => summaryApi.getTrend(6), [version]);
+  const daily = useFetch(() => summaryApi.getDaily(month), [month, version]);
   const transactions = useFetch(
     () => transactionsApi.list({ month, ...filters }),
     [month, filters.category, filters.search, filters.type, version],
@@ -53,13 +54,14 @@ export function FinanceProvider({ children }) {
       categories,
       summary,
       trend,
+      daily,
       transactions,
       addTransaction,
       updateTransaction,
       deleteTransaction,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [month, filters, categories, summary, trend, transactions],
+    [month, filters, categories, summary, trend, daily, transactions],
   );
 
   return <FinanceContext.Provider value={value}>{children}</FinanceContext.Provider>;

@@ -18,15 +18,15 @@ describe('SummaryCards', () => {
     expect(screen.getByText('$4,850.00')).toBeInTheDocument();
     expect(screen.getByText('$2,289.27')).toBeInTheDocument();
     expect(screen.getByText('+$2,560.73')).toBeInTheDocument();
-    expect(screen.getByText('Housing')).toBeInTheDocument();
+    expect(screen.getByText(/Housing/)).toBeInTheDocument();
     expect(screen.getByText('saved this month')).toBeInTheDocument();
   });
 
-  it('falls back to zeros and a dash before data arrives', () => {
+  it('falls back to zeros and empty metadata before data arrives', () => {
     render(<SummaryCards summary={null} loading />);
 
     // Income, expenses and net all read $0.00 with no data yet.
     expect(screen.getAllByText('$0.00')).toHaveLength(3);
-    expect(screen.getByText('—')).toBeInTheDocument(); // top category
+    expect(screen.getByText('no expenses yet')).toBeInTheDocument();
   });
 });

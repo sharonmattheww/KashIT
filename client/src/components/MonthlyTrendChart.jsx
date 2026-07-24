@@ -92,27 +92,27 @@ export default function MonthlyTrendChart({ data = [] }) {
         >
           <CartesianGrid
             vertical={false}
-            stroke="var(--line)"
+            stroke="rgba(139,92,246,0.1)"
             strokeDasharray="4 3"
           />
           <XAxis
             dataKey="name"
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 12, fill: 'var(--faint)', fontFamily: 'var(--font-sans)' }}
+            tick={{ fontSize: 12, fill: 'var(--text-3)', fontFamily: 'var(--font-sans)' }}
           />
           <YAxis
             axisLine={false}
             tickLine={false}
             width={64}
             tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v)}
-            tick={{ fontSize: 11, fill: 'var(--faint)', fontFamily: 'var(--font-mono)' }}
+            tick={{ fontSize: 11, fill: 'var(--text-3)', fontFamily: 'var(--font-mono)' }}
           />
-          <Tooltip content={<TrendTooltip />} cursor={{ fill: 'var(--brand-tint)', radius: 4 }} />
+          <Tooltip content={<TrendTooltip />} cursor={{ fill: 'var(--accent-soft)', radius: 4 }} />
           <Legend
             iconType="circle"
             iconSize={8}
-            wrapperStyle={{ fontSize: '0.8rem', paddingTop: '12px', color: 'var(--muted)' }}
+            wrapperStyle={{ fontSize: '0.78rem', paddingTop: '12px', color: 'var(--text-3)' }}
             formatter={(value) => (value === 'totalIncome' ? 'Income' : 'Expenses')}
           />
           <Bar

@@ -23,4 +23,5 @@ export const categoriesApi = {
 export const summaryApi = {
   get: (month) => api.get(`/summary${toQuery({ month })}`),
   getTrend: (months = 6) => api.get(`/summary/trend${toQuery({ months })}`),
+  getDaily: (month) => api.get(`/summary/daily${toQuery({ month })}`),
 };
