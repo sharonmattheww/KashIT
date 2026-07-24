@@ -1,8 +1,10 @@
-# Personal Finance Dashboard
+# KashIT — Personal Finance Dashboard
+
+🚀 **Live Demo**: [https://kashit.onrender.com](https://kashit.onrender.com)
 
 A responsive web app for tracking personal income and expenses. Add transactions,
 filter and search them, see a monthly summary at a glance, and visualise spending
-by category — all backed by a small REST API and a local SQLite database.
+by category — all backed by a REST API and a local SQLite database.
 
 ## Features
 
