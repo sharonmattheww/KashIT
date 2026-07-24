@@ -23,15 +23,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar__brand">
         <span className="sidebar__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
-            <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="4" opacity="0.28" />
-            <path
-              d="M16 5a11 11 0 0 1 9.5 16.5"
-              stroke="currentColor"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
+          <img src="/logo.png" alt="KashIT" width="32" height="32" style={{ objectFit: 'contain' }} />
         </span>
         <span className="sidebar__wordmark">KashIT</span>
       </div>
