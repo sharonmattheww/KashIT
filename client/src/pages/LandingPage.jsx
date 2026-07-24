@@ -29,9 +29,6 @@ export default function LandingPage() {
       {/* Main Hero Section */}
       <main className="landing-content">
         <section className="landing-hero">
-          <span className="landing-hero__badge">
-            ✨ Personal Finance & Cashflow Intelligence
-          </span>
           <h1 className="landing-hero__title">
             Take Complete Control of Your Personal Finances
           </h1>
