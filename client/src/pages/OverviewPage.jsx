@@ -27,11 +27,6 @@ export default function OverviewPage() {
           <h1 className="hero-banner__heading">Monthly Financial Performance</h1>
           <p className="hero-banner__sub">{currentMonthLabel} Audit & Cashflow Intelligence</p>
         </div>
-        <div className="hero-banner__actions">
-          <button type="button" className="btn btn--primary" onClick={() => openForm()}>
-            + Add Transaction
-          </button>
-        </div>
       </div>
 
       {/* Top Visual Analytics Grid (Gauges, Spending Velocity, Category) */}
