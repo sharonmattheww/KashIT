@@ -10,14 +10,14 @@ import {
 
 describe('currency formatting', () => {
   it('formats a plain amount with two decimals and a thousands separator', () => {
-    expect(formatCurrency(1350)).toBe('$1,350.00');
-    expect(formatCurrency(4.8)).toBe('$4.80');
+    expect(formatCurrency(1350)).toBe('₹1,350.00');
+    expect(formatCurrency(4.8)).toBe('₹4.80');
   });
 
   it('adds a sign for the net balance', () => {
-    expect(formatSignedCurrency(2560.73)).toBe('+$2,560.73');
-    expect(formatSignedCurrency(-100)).toBe('−$100.00'); // U+2212 minus
-    expect(formatSignedCurrency(0)).toBe('$0.00');
+    expect(formatSignedCurrency(2560.73)).toBe('+₹2,560.73');
+    expect(formatSignedCurrency(-100)).toBe('−₹100.00'); // U+2212 minus
+    expect(formatSignedCurrency(0)).toBe('₹0.00');
   });
 });
 

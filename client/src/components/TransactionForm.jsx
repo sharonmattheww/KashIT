@@ -86,7 +86,7 @@ export default function TransactionForm({ initial, onClose }) {
         </label>
         <div className="field__money">
           <span className="field__prefix" aria-hidden="true">
-            $
+            ₹
           </span>
           <input
             id="amount"

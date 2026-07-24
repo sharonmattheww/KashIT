@@ -1,8 +1,8 @@
 // Small pure formatting helpers, shared across components and covered by tests.
 
-const currency = new Intl.NumberFormat('en-US', {
+const currency = new Intl.NumberFormat('en-IN', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'INR',
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
