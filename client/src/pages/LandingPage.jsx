@@ -46,61 +46,6 @@ export default function LandingPage() {
             </Link>
           </div>
         </section>
-
-        {/* Feature Cards Grid */}
-        <section className="landing-features" aria-label="Key features">
-          <div className="feature-card">
-            <div className="feature-card__icon">⚡</div>
-            <h3 className="feature-card__title">Spending Velocity</h3>
-            <p className="feature-card__desc">
-              Visualize daily and weekly spending momentum with smooth monotone bezier curves 
-              and gradient flow indicators.
-            </p>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-card__icon">🍩</div>
-            <h3 className="feature-card__title">Category Intelligence</h3>
-            <p className="feature-card__desc">
-              Toggle between interactive Donut and Horizontal Bar views to audit category 
-              expense allocations instantly.
-            </p>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-card__icon">📈</div>
-            <h3 className="feature-card__title">Historical Trends</h3>
-            <p className="feature-card__desc">
-              Compare 6-month historical income versus expense growth powered by SQLite 
-              database aggregations.
-            </p>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-card__icon">💳</div>
-            <h3 className="feature-card__title">Full Ledger Control</h3>
-            <p className="feature-card__desc">
-              Manage transactions with instantaneous search, multi-criteria category filtering, 
-              and inline updates.
-            </p>
-          </div>
-        </section>
-
-        {/* Stat Highlights Bar */}
-        <section className="landing-stats" aria-label="Platform highlights">
-          <div className="landing-stat">
-            <span className="landing-stat__val">100%</span>
-            <span className="landing-stat__label">Privacy & Local Database</span>
-          </div>
-          <div className="landing-stat">
-            <span className="landing-stat__val">&lt;20ms</span>
-            <span className="landing-stat__label">SQLite Aggregation</span>
-          </div>
-          <div className="landing-stat">
-            <span className="landing-stat__val">6+</span>
-            <span className="landing-stat__label">Analytical Views</span>
-          </div>
-        </section>
       </main>
 
       <footer className="landing-footer">
