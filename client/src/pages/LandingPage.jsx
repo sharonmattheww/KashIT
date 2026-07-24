@@ -20,7 +20,7 @@ export default function LandingPage() {
           <span className="landing-nav__wordmark">KashIT</span>
         </div>
         <div className="landing-nav__actions">
-          <Link to="/app" className="btn btn--primary">
+          <Link to="/" className="btn btn--primary">
             Launch Dashboard →
           </Link>
         </div>
@@ -38,10 +38,10 @@ export default function LandingPage() {
           </p>
 
           <div className="landing-hero__cta">
-            <Link to="/app" className="btn btn--primary btn--lg">
+            <Link to="/" className="btn btn--primary btn--lg">
               Launch Dashboard →
             </Link>
-            <Link to="/app/transactions" className="btn btn--ghost btn--lg">
+            <Link to="/transactions" className="btn btn--ghost btn--lg">
               View Transactions Ledger
             </Link>
           </div>
