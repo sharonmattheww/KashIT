@@ -4,9 +4,9 @@ import { useFinance } from '../../context/FinanceContext.jsx';
 import { formatMonth, recentMonths } from '../../utils/format.js';
 
 const TITLES = {
-  '/': 'Overview',
+  '/app': 'Overview',
+  '/overview': 'Overview',
   '/transactions': 'Transactions',
-  '/welcome': 'Welcome',
 };
 
 export default function TopBar({ onAdd }) {

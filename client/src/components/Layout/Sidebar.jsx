@@ -42,11 +42,11 @@ export default function Sidebar() {
       </div>
 
       <nav className="sidebar__nav" aria-label="Primary">
-        <NavLink to="/welcome" className="nav-link">
+        <NavLink to="/" end className="nav-link">
           <HomeIcon />
           <span>Home</span>
         </NavLink>
-        <NavLink to="/" end className="nav-link">
+        <NavLink to="/app" className="nav-link">
           <OverviewIcon />
           <span>Overview</span>
         </NavLink>

@@ -10,12 +10,14 @@ export default function App() {
   return (
     <FinanceProvider>
       <Routes>
-        {/* Landing Page */}
+        {/* Direct Root Landing Page */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/welcome" element={<LandingPage />} />
 
-        {/* Dashboard Pages */}
+        {/* Dashboard Shell Routes */}
         <Route element={<AppLayout />}>
-          <Route path="/" element={<OverviewPage />} />
+          <Route path="/app" element={<OverviewPage />} />
+          <Route path="/overview" element={<OverviewPage />} />
           <Route path="/transactions" element={<TransactionsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
