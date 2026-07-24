@@ -33,7 +33,7 @@ export default function Sidebar() {
             />
           </svg>
         </span>
-        <span className="sidebar__wordmark">Ledger</span>
+        <span className="sidebar__wordmark">KashIT</span>
       </div>
 
       <nav className="sidebar__nav" aria-label="Primary">
