@@ -4,7 +4,6 @@ import { useFinance } from '../context/FinanceContext.jsx';
 import { formatMonth } from '../utils/format.js';
 import SummaryCards from '../components/SummaryCards.jsx';
 import CategoryChart from '../components/CategoryChart.jsx';
-import TargetGaugeCard from '../components/TargetGaugeCard.jsx';
 import DailySpendingChart from '../components/DailySpendingChart.jsx';
 import MonthlyTrendChart from '../components/MonthlyTrendChart.jsx';
 import TransactionList from '../components/TransactionList.jsx';
@@ -29,14 +28,8 @@ export default function OverviewPage() {
         </div>
       </div>
 
-      {/* Top Visual Analytics Grid (Gauges, Spending Velocity, Category) */}
-      <div className="analytics-hero-grid">
-        {/* Gauge Arc Meter Component */}
-        <TargetGaugeCard summary={summary.data} />
-
-        {/* Weekly & Daily Velocity Line Chart (3rd Chart!) */}
-        <DailySpendingChart dailyData={daily.data} />
-      </div>
+      {/* Weekly & Daily Velocity Line Chart */}
+      <DailySpendingChart dailyData={daily.data} />
 
       {/* 4 Summary Cards with Progress Bars */}
       <SummaryCards summary={summary.data} loading={summary.loading} />
