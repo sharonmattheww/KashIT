@@ -1,43 +1,44 @@
 /* ==========================================================================
-   KashIT — Translucent Light Purple & Clean White Dashboard Aesthetic
+   KashIT — Warm Glassmorphism & Photo Background Dashboard Design System
+   Inspired by architectural lounge ambient dashboards with frosted warm mocha glass.
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* ---- Design Tokens ------------------------------------------------------- */
 :root {
   /* Surfaces */
-  --paper: #FFFFFF;                  /* Crisp White Canvas */
-  --card: rgba(243, 238, 255, 0.75); /* Translucent Light Purple Surface */
-  --card-hover: rgba(235, 227, 255, 0.9);
-  --rail: rgba(245, 242, 255, 0.9);  /* Translucent Sidebar Rail */
-  --rail-soft: rgba(124, 58, 237, 0.08);
+  --paper: #120B09;                  /* Warm Ambient Base */
+  --card: rgba(35, 25, 21, 0.65);    /* Translucent Warm Mocha Frosted Glass */
+  --card-hover: rgba(48, 34, 28, 0.78);
+  --rail: rgba(24, 17, 14, 0.75);    /* Translucent Sidebar Rail */
+  --rail-soft: rgba(255, 255, 255, 0.08);
 
   /* Text */
-  --ink: #2E1065;        /* Deep Royal Violet for maximum contrast on light background */
-  --muted: #5B21B6;      /* Rich Violet Muted Text */
-  --faint: #7C3AED;      /* Vivid Purple Accent Text */
-  --on-rail: #2E1065;
-  --on-rail-muted: #6D28D9;
+  --ink: #FFFFFF;        /* Crisp White Headers */
+  --muted: #E2D4C9;      /* Warm Sand Muted Text */
+  --faint: #B3A092;      /* Warm Tan Text */
+  --on-rail: #FFFFFF;
+  --on-rail-muted: #D4C4B7;
 
   /* Brand + Semantics */
-  --brand: #7C3AED;
-  --brand-strong: #6D28D9;
-  --brand-tint: rgba(124, 58, 237, 0.12);
-  --mint: #059669;       /* Deep Emerald */
-  --income: #059669;     /* Deep Emerald Income */
-  --expense: #E11D48;    /* Vivid Rose Red Expense */
-  --danger: #DC2626;
+  --brand: #00E676;      /* Vibrant Emerald Green Accent */
+  --brand-strong: #00C853;
+  --brand-tint: rgba(0, 230, 118, 0.16);
+  --mint: #00E676;       /* Emerald Accent */
+  --income: #00E676;     /* Emerald Income */
+  --expense: #FF5252;    /* Vivid Coral Expense */
+  --danger: #FF5252;
 
   /* Lines + Shadows */
-  --line: rgba(139, 92, 246, 0.22);
-  --line-strong: rgba(139, 92, 246, 0.38);
-  --shadow-sm: 0 4px 16px rgba(124, 58, 237, 0.08);
-  --shadow-md: 0 8px 24px rgba(124, 58, 237, 0.12);
-  --shadow-lg: 0 16px 48px rgba(46, 16, 101, 0.18);
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.25);
+  --shadow-sm: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.8);
 
   /* Shape */
-  --radius: 20px;
-  --radius-sm: 12px;
+  --radius: 24px;
+  --radius-sm: 14px;
   --radius-pill: 999px;
 
   /* Type */
@@ -47,7 +48,7 @@
   --sidebar-w: 250px;
 }
 
-/* ---- Reset --------------------------------------------------------------- */
+/* ---- Reset & Ambient Photo Background ------------------------------------ */
 *,
 *::before,
 *::after {
@@ -64,11 +65,16 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: linear-gradient(rgba(12, 8, 6, 0.42), rgba(12, 8, 6, 0.42)), url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  min-height: 100vh;
 }
 
 button,
@@ -129,16 +135,16 @@ svg {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
   min-height: 100vh;
-  background: var(--paper);
 }
 
-/* ---- Sidebar ------------------------------------------------------------- */
+/* ---- Sidebar (Warm Frosted Glass) ---------------------------------------- */
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
   background: var(--rail);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   color: var(--on-rail);
   display: flex;
   flex-direction: column;
@@ -155,15 +161,17 @@ svg {
 }
 
 .sidebar__mark {
+  color: var(--mint);
   display: grid;
   place-items: center;
+  filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.4));
 }
 
 .sidebar__wordmark {
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .sidebar__nav {
@@ -186,17 +194,19 @@ svg {
 
 .nav-link:hover {
   background: var(--rail-soft);
-  color: var(--brand);
+  color: #FFFFFF;
 }
 
 .nav-link.active {
-  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.25) 0%, rgba(0, 200, 83, 0.12) 100%);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
 }
 
 .nav-link.active svg {
-  color: #FFFFFF;
+  color: var(--mint);
+  filter: drop-shadow(0 0 6px rgba(0, 230, 118, 0.5));
 }
 
 /* ---- Main + Topbar ------------------------------------------------------- */
@@ -216,8 +226,9 @@ svg {
   gap: 16px;
   flex-wrap: wrap;
   padding: 20px 36px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(22, 16, 13, 0.72);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid var(--line);
 }
 
@@ -225,7 +236,7 @@ svg {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .topbar__subtitle {
@@ -250,7 +261,7 @@ svg {
 }
 
 /* ==========================================================================
-   Hero Banner (Translucent Light Purple Surface)
+   Hero Banner (Warm Mocha Frosted Glass)
    ========================================================================== */
 .hero-banner {
   display: flex;
@@ -258,11 +269,12 @@ svg {
   justify-content: space-between;
   gap: 24px;
   padding: 28px 32px;
-  background: linear-gradient(135deg, rgba(237, 226, 255, 0.95) 0%, rgba(223, 208, 255, 0.75) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, rgba(42, 30, 25, 0.72) 0%, rgba(28, 20, 16, 0.65) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -278,13 +290,13 @@ svg {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: #4C1D95;
+  color: #FFFFFF;
 }
 
 .hero-banner__heading {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #2E1065;
+  color: #F3EBE6;
   letter-spacing: -0.02em;
 }
 
@@ -315,25 +327,26 @@ svg {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
-  color: #FFFFFF;
+  background: #00E676;
+  color: #042413;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 230, 118, 0.4);
 }
 
 .btn--primary:hover {
   filter: brightness(1.1);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+  box-shadow: 0 6px 24px rgba(0, 230, 118, 0.55);
 }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(35, 25, 21, 0.65);
+  backdrop-filter: blur(12px);
   border-color: var(--line);
   color: var(--ink);
 }
 
 .btn--ghost:hover {
-  background: rgba(243, 238, 255, 0.9);
+  background: rgba(48, 34, 28, 0.8);
   border-color: var(--line-strong);
 }
 
@@ -360,15 +373,16 @@ svg {
 }
 
 .btn--icon:hover {
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
 }
 
 .input {
   height: 44px;
   width: 100%;
   padding: 0 16px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(20, 14, 12, 0.65);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
   color: var(--ink);
@@ -376,18 +390,18 @@ svg {
 }
 
 .input::placeholder {
-  color: #9CA3AF;
+  color: var(--faint);
 }
 
 .input:focus {
   outline: none;
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.25);
 }
 
 .select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%235B21B6' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23E2D4C9' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 36px;
@@ -398,12 +412,13 @@ svg {
    Velocity Line Chart Card
    ========================================================================== */
 .velocity-chart-card {
-  background: var(--card);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(38, 27, 22, 0.72) 0%, rgba(26, 18, 15, 0.62) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -418,12 +433,12 @@ svg {
 .velocity-chart-card__title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .velocity-chart-card__sub {
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--faint);
 }
 
 .velocity-chart-card__body {
@@ -431,7 +446,7 @@ svg {
 }
 
 /* ==========================================================================
-   Summary Cards (Translucent Light Purple Surface)
+   Summary Cards (Warm Frosted Glass Cards)
    ========================================================================== */
 .summary-grid {
   display: grid;
@@ -441,12 +456,13 @@ svg {
 
 .stat {
   position: relative;
-  background: linear-gradient(135deg, rgba(243, 238, 255, 0.95) 0%, rgba(233, 222, 255, 0.75) 100%);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(139, 92, 246, 0.28);
+  background: linear-gradient(135deg, rgba(38, 27, 22, 0.72) 0%, rgba(26, 18, 15, 0.62) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px 20px 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -455,8 +471,8 @@ svg {
 
 .stat:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, rgba(238, 230, 255, 1) 0%, rgba(225, 212, 255, 0.85) 100%);
-  border-color: rgba(124, 58, 237, 0.4);
+  background: linear-gradient(135deg, rgba(46, 33, 27, 0.8) 0%, rgba(32, 22, 18, 0.7) 100%);
+  border-color: var(--line-strong);
   box-shadow: var(--shadow-md);
 }
 
@@ -470,7 +486,7 @@ svg {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #5B21B6;
+  color: var(--muted);
   font-weight: 700;
 }
 
@@ -484,7 +500,7 @@ svg {
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: #2E1065;
+  color: #FFFFFF;
   line-height: 1.1;
   margin-top: 4px;
 }
@@ -505,7 +521,7 @@ svg {
 
 .stat__meta {
   font-size: 0.82rem;
-  color: #6D28D9;
+  color: var(--faint);
 }
 
 .stat__progress-track {
@@ -513,7 +529,7 @@ svg {
   width: 100%;
   height: 7px;
   border-radius: var(--radius-pill);
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
@@ -534,11 +550,12 @@ svg {
 }
 
 .panel {
-  background: var(--card);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(38, 27, 22, 0.72) 0%, rgba(26, 18, 15, 0.62) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .panel__head {
@@ -554,22 +571,22 @@ svg {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .panel__hint {
   font-size: 0.82rem;
-  color: var(--muted);
+  color: var(--faint);
 }
 
 .panel__link {
   font-size: 0.86rem;
   font-weight: 600;
-  color: var(--brand);
+  color: var(--mint);
 }
 
 .panel__link:hover {
-  color: var(--brand-strong);
+  color: #69f0ae;
 }
 
 .panel__filters {
@@ -604,14 +621,15 @@ svg {
 }
 
 .chart-tab:hover {
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
 }
 
 .chart-tab.is-active {
   background: var(--brand);
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+  color: #042413;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0, 230, 118, 0.35);
 }
 
 .chart {
@@ -638,30 +656,30 @@ svg {
   font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--faint);
 }
 
 .chart__center-value {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .chart-tooltip {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: #2E1065;
+  background: rgba(20, 14, 12, 0.92);
   color: #fff;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   box-shadow: var(--shadow-md);
 }
 
 .chart-tooltip__name {
   font-size: 0.82rem;
-  color: #DDD6FE;
+  color: var(--muted);
 }
 
 .chart-tooltip__value {
@@ -697,13 +715,13 @@ svg {
 .breakdown__name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .breakdown__amount {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .breakdown__percent {
@@ -716,7 +734,7 @@ svg {
   grid-column: 1 / -1;
   height: 6px;
   border-radius: var(--radius-pill);
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
@@ -764,7 +782,7 @@ svg {
 
 .tx-row__desc {
   font-weight: 600;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .tx-row__sub {
@@ -778,14 +796,14 @@ svg {
   font-weight: 600;
   padding: 2px 10px;
   border-radius: var(--radius-pill);
-  color: #4C1D95;
-  background: rgba(124, 58, 237, 0.12);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.12);
   white-space: nowrap;
 }
 
 .tx-row__date {
   font-size: 0.8rem;
-  color: var(--muted);
+  color: var(--faint);
 }
 
 .tx-row__amount {
@@ -800,7 +818,7 @@ svg {
 }
 
 .amount--expense {
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .tx-row__actions {
@@ -830,7 +848,7 @@ svg {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--muted);
+  color: var(--faint);
   pointer-events: none;
 }
 
@@ -850,8 +868,8 @@ svg {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(46, 16, 101, 0.45);
-  backdrop-filter: blur(6px);
+  background: rgba(12, 8, 6, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -861,8 +879,8 @@ svg {
 .modal {
   width: 100%;
   max-width: 460px;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(16px);
+  background: linear-gradient(135deg, rgba(42, 30, 25, 0.95) 0%, rgba(28, 20, 16, 0.9) 100%);
+  backdrop-filter: blur(24px);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
@@ -879,7 +897,7 @@ svg {
 .modal__title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .modal__body {
@@ -896,7 +914,7 @@ svg {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
-  background: rgba(243, 238, 255, 0.8);
+  background: rgba(20, 14, 12, 0.7);
   padding: 4px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
@@ -913,8 +931,9 @@ svg {
 
 .segmented__option.is-active {
   background: var(--brand);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  color: #042413;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 230, 118, 0.35);
 }
 
 .field {
@@ -938,7 +957,7 @@ svg {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--muted);
+  color: var(--faint);
   pointer-events: none;
 }
 
@@ -953,12 +972,12 @@ svg {
 }
 
 .form-error {
-  background: rgba(225, 29, 72, 0.1);
-  color: #E11D48;
+  background: rgba(255, 82, 82, 0.15);
+  color: #FF5252;
   font-size: 0.86rem;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(225, 29, 72, 0.25);
+  border: 1px solid rgba(255, 82, 82, 0.3);
 }
 
 .tx-form__actions {
@@ -986,19 +1005,19 @@ svg {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(0, 230, 118, 0.15);
   color: var(--brand);
   font-size: 1.4rem;
 }
 
 .empty__title {
   font-weight: 700;
-  color: var(--ink);
+  color: #FFFFFF;
 }
 
 .empty__message {
   font-size: 0.88rem;
-  color: var(--muted);
+  color: var(--faint);
   max-width: 32ch;
 }
 
@@ -1008,7 +1027,7 @@ svg {
   align-items: center;
   gap: 12px;
   padding: 48px 24px;
-  color: var(--muted);
+  color: var(--faint);
   font-size: 0.88rem;
 }
 
@@ -1016,7 +1035,7 @@ svg {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 3px solid rgba(139, 92, 246, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.15);
   border-top-color: var(--brand);
   animation: spin 0.7s linear infinite;
 }
